@@ -1,0 +1,461 @@
+/* Reset básico y variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  :root {
+    --primary-color: #0052cc; /* Azul principal (ajusta) */
+    --secondary-color: #00a3bf; /* Color secundario/acento (ajusta) */
+    --text-color: #333;
+    --text-light: #555;
+    --bg-light: #f8f9fa;
+    --white: #fff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px; /* Tamaño base */
+  }
+  
+  .container {
+    max-width: 1140px; /* Ancho estándar */
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Navegación */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 10px 0; /* Ligeramente menos padding vertical */
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para el logo en la navegación */
+  nav a.logo img {
+    display: block; /* Asegura que la imagen se comporte como bloque */
+    height: 80px;   /* Altura de visualización del logo en nav */
+    width: auto;    /* Mantiene la proporción (será 80px si es cuadrado) */
+  }
+  
+  /* Quita el estilo de texto del enlace del logo si aún existe */
+  nav a.logo {
+    font-size: inherit; /* Anula el tamaño de fuente anterior */
+    font-weight: normal;
+    text-transform: none;
+    line-height: 1; /* Ayuda con la alineación vertical */
+  }
+  
+  
+  nav ul.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  nav ul.nav-menu li {
+    margin-left: 35px;
+  }
+  
+  nav ul.nav-menu li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.3s;
+  }
+  
+  nav ul.nav-menu li a:hover {
+    color: var(--primary-color);
+  }
+  
+  nav ul.nav-menu li a.nav-cta {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  nav ul.nav-menu li a.nav-cta:hover {
+    background-color: #0041a3; /* Oscurecer azul primario */
+    color: var(--white);
+  }
+  
+  .mobile-menu-button { /* Estilo básico para el botón móvil */
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color); /* Darle color */
+  }
+  
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    background-image: url('./images/hero-background.png'); /* Cambiado a .png */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding-top: 80px; /* Space for fixed navbar */
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  /* Botón CTA General */
+  .cta-button {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cta-button:hover {
+    background: #0041a3; /* Oscurecer azul primario */
+    transform: translateY(-2px);
+  }
+  
+  /* Estilos Generales de Sección */
+  .section-padding {
+    padding: 80px 0;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bg-light {
+    background-color: var(--bg-light);
+  }
+  
+  .text-center {
+      text-align: center;
+  }
+  
+  /* Sección Servicios */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Rejilla responsiva */
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .service-item {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 35px 30px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+  
+  .service-icon {
+    color: #007bff; /* or your brand color */
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-icon i {
+    transition: transform 0.3s ease;
+  }
+  
+  .service-item:hover .service-icon i {
+    transform: scale(1.1);
+  }
+  
+  .service-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .service-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light);
+  }
+  
+  
+  /* Sección "Por Qué Trilemma" (similar a servicios) */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .feature-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon i {
+    font-size: 3rem;
+  }
+  
+  .feature-item h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .feature-item p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+  
+  /* Sección About Us */
+  .about-text {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: var(--text-light);
+  }
+  
+  /* Footer */
+  footer {
+    background: #222; /* Footer oscuro */
+    color: #ccc;
+    padding-top: 60px;
+  }
+  
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+  }
+  
+  /* Estilos para el logo en el footer */
+  footer .footer-col a.logo img {
+    display: block; /* Para poder centrarlo si es necesario */
+    height: 35px;   /* Altura de visualización en footer */
+    width: auto;    /* Mantiene proporción (será 35px si es cuadrado) */
+    margin-bottom: 15px; /* Espacio debajo del logo en el footer */
+    /* Si .footer-col tiene text-align: center, la imagen se centrará. */
+    /* Si no, puedes añadir esto para centrarla si la columna es estrecha: */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+  }
+  
+  /* Quita el estilo de texto del enlace del logo en el footer */
+  footer .footer-col a.logo {
+      font-size: inherit;
+      font-weight: normal;
+      text-transform: none;
+      /* Asegúrate que no haya padding/margin extra que descoloque la img */
+      display: inline-block; /* O block si ocupa toda la línea */
+      line-height: 1;
+  }
+  
+  .footer-col p {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.6; /* Mejorar legibilidad */
+  }
+  
+  .footer-col h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  
+  .footer-col ul {
+    list-style: none;
+    padding: 0; /* Asegurar que no hay padding por defecto */
+  }
+  
+  .footer-col ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-col ul li a:hover {
+    color: var(--white);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #444;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+  
+  /* Media Queries (Ajustes básicos) */
+  @media (max-width: 992px) {
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+     .services-grid, .features-grid {
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     }
+     .section-padding {
+          padding: 70px 0;
+     }
+  }
+  
+  @media (max-width: 768px) {
+    nav ul.nav-menu {
+      display: none; /* Oculta menú normal en móvil */
+      /* Aquí se necesitaría JS para mostrar un menú desplegable */
+    }
+    .mobile-menu-button {
+        display: block; /* Muestra el botón hamburguesa */
+    }
+    .hero {
+        height: 60vh;
+        min-height: 500px;
+    }
+     .hero-content {
+       padding: 0 15px; /* Más padding lateral */
+       max-width: 100%; /* Ocupar ancho */
+     }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+    .section-padding {
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 2rem;
+    }
+     .services-grid, .features-grid {
+       grid-template-columns: 1fr; /* Una columna en móviles */
+     }
+     .footer-container {
+         grid-template-columns: 1fr; /* Una columna en footer móvil */
+         text-align: center;
+     }
+      /* Centrar logo e info en footer móvil */
+     footer .footer-col a.logo img {
+         margin-left: auto;
+         margin-right: auto;
+     }
+     footer .footer-col {
+         margin-bottom: 20px; /* Espacio entre columnas apiladas */
+     }
+      footer .footer-col:last-child {
+         margin-bottom: 0;
+     }
+  
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 80px;
+    width: auto;
+  }
+
+  .footer-col .logo img {
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  /* Ajuste responsive para móviles */
+  @media (max-width: 768px) {
+    .logo img {
+        height: 60px;
+    }
+    
+    .footer-col .logo img {
+        height: 50px;
+    }
+  }
